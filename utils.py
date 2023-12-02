@@ -1,4 +1,10 @@
+import os.path
+
+
 def read_file(file: str):
+    if not os.path.isfile(file):
+        return ""
+
     with open(file, "r") as f:
         return f.read()
 
