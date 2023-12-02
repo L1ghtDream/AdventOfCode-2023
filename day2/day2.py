@@ -5,7 +5,7 @@ def get_name() -> str:
     return "day2"
 
 
-def part1(data, output_file):
+def part1(data) -> str:
     result: int = 0
 
     max_red: int = 12
@@ -43,10 +43,10 @@ def part1(data, output_file):
         if good:
             result += game_id
 
-    write_file(output_file, result)
+    return str(result)
 
 
-def part2(data, output_file):
+def part2(data) -> str:
     result: int = 0
 
     for game in data.splitlines():
@@ -71,5 +71,5 @@ def part2(data, output_file):
 
         result += red * green * blue
 
-    write_file(output_file, result)
+    return str(result)
 

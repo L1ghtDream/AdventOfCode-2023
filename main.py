@@ -7,11 +7,16 @@ def main():
     part2_input: str = read_file(f"{current_day.get_name()}/input/part2.input.small")
     input: str = read_file(f"{current_day.get_name()}/input/input")
 
-    current_day.part1(part1_input, f"{current_day.get_name()}/output/part1.output.small")
-    current_day.part1(input, f"{current_day.get_name()}/output/part1.output")
+    part1_output_small = current_day.part1(part1_input, )
+    part1_output = current_day.part1(input)
 
-    current_day.part2(part2_input, f"{current_day.get_name()}/output/part2.output.small")
-    current_day.part2(input, f"{current_day.get_name()}/output/part2.output")
+    part2_output_small = current_day.part2(part2_input)
+    part2_output = current_day.part2(input)
+
+    write_file(f"{current_day.get_name()}/output/part1.output.small", part1_output_small)
+    write_file(f"{current_day.get_name()}/output/part1.output", part1_output)
+    write_file(f"{current_day.get_name()}/output/part2.output.small", part2_output_small)
+    write_file(f"{current_day.get_name()}/output/part2.output", part2_output)
 
 
 if __name__ == '__main__':

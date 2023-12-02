@@ -5,22 +5,22 @@ def get_name() -> str:
     return "day1"
 
 
-def part1(data, output_file):
+def part1(data) -> str:
     result: int = 0
 
     for line in data.splitlines():
         result += extract_number(line)
 
-    write_file(output_file, result)
+    return str(result)
 
 
-def part2(data, output_file):
+def part2(data) -> str:
     result: int = 0
 
     for line in add_spelled_out_numbers(data).splitlines():
         result += extract_number(line)
 
-    write_file(output_file, result)
+    return str(result)
 
 
 def extract_number(string: str) -> int:
