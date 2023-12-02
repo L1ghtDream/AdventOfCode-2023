@@ -1,22 +1,26 @@
 from utils import *
 
 
-def main():
-    data_part1: str = read_file("day1/input")
-    result_part1: int = 0
+def get_name() -> str:
+    return "day1"
 
-    data_part2 = add_spelled_out_numbers(data_part1)
-    result_part2: int = 0
 
-    for line in data_part1.splitlines():
-        result_part1 += extract_number(line)
+def part1(data, output_file):
+    result: int = 0
 
-    for line in data_part2.splitlines():
-        print(f"{line} -> {extract_number(line)}")
-        result_part2 += extract_number(line)
+    for line in data.splitlines():
+        result += extract_number(line)
 
-    write_file("day1/part1.output", result_part1)
-    write_file("day1/part2.output", result_part2)
+    write_file(output_file, result)
+
+
+def part2(data, output_file):
+    result: int = 0
+
+    for line in add_spelled_out_numbers(data).splitlines():
+        result += extract_number(line)
+
+    write_file(output_file, result)
 
 
 def extract_number(string: str) -> int:
@@ -53,7 +57,3 @@ def add_spelled_out_numbers(string: str) -> str:
         string = string.replace(key, key + digits[key] + key)
 
     return string
-
-
-if __name__ == '__main__':
-    main()
