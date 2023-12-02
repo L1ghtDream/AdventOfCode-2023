@@ -2,7 +2,7 @@ from utils import *
 
 
 def main():
-    data_part1: str = read_file("day1.input")
+    data_part1: str = read_file("day1/input")
     result_part1: int = 0
 
     data_part2 = add_spelled_out_numbers(data_part1)
@@ -15,8 +15,8 @@ def main():
         print(f"{line} -> {extract_number(line)}")
         result_part2 += extract_number(line)
 
-    write_file("day1_part1.output", result_part1)
-    write_file("day1_part2.output", result_part2)
+    write_file("day1/part1.output", result_part1)
+    write_file("day1/part2.output", result_part2)
 
 
 def extract_number(string: str) -> int:
