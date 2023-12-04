@@ -1,5 +1,5 @@
 from utils import *
-import day3.day3 as current_day
+import day4.day4 as current_day
 
 
 def main():
