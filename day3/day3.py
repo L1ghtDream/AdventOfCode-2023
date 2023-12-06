@@ -12,9 +12,6 @@ def part1(data) -> str:
     result: int = 0
 
     symbols: set[str] = generate_symbols(data)
-    print(symbols)
-    print(len(symbols))
-
     lines: list[str] = data.splitlines()
 
     data_processed: list[str] = []
@@ -28,8 +25,6 @@ def part1(data) -> str:
     lines.append("." * len(lines[0]))
 
     for line_index in range(1, len(lines) - 1):
-        print(f"{Style.RESET_ALL}{line_index}: ", end="")
-
         line: str = lines[line_index]
         start: int = -1
         near_symbol = False
@@ -51,18 +46,10 @@ def part1(data) -> str:
                 if start != -1:
                     string: str = line[start:index]
                     if near_symbol:
-                        print(Fore.GREEN + string, end="")
-                        print(Style.RESET_ALL + line[index], end="")
                         result += int(string)
-                    else:
-                        print(Fore.RED + string, end="")
-                        print(Style.RESET_ALL + line[index], end="")
 
                     start = -1
                     near_symbol = False
-                else:
-                    print(Style.RESET_ALL + line[index], end="")
-        print()
 
     return str(result)
 
@@ -71,9 +58,6 @@ def part2(data) -> str:
     result: int = 0
 
     symbols: set[str] = generate_symbols(data)
-    print(symbols)
-    print(len(symbols))
-
     lines: list[str] = data.splitlines()
 
     data_processed: list[str] = []
@@ -88,8 +72,6 @@ def part2(data) -> str:
     gears: dict[set:list[int]] = {}
 
     for line_index in range(1, len(lines) - 1):
-        print(f"{Style.RESET_ALL}{line_index}: ", end="")
-
         line: str = lines[line_index]
         start: int = -1
         nearby_gears: list[set[int:int]] = []
@@ -122,21 +104,11 @@ def part2(data) -> str:
 
                             gears[nearby_gear] = current_connections
 
-                        print(Fore.GREEN + string, end="")
-                        print(Style.RESET_ALL + line[index], end="")
-                    else:
-                        print(Fore.RED + string, end="")
-                        print(Style.RESET_ALL + line[index], end="")
-
                     start = -1
                     nearby_gears = []
-                else:
-                    print(Style.RESET_ALL + line[index], end="")
-        print()
 
     for gear in gears.keys():
         connections: list[int] = gears[gear]
-        print(f"{gear}: {connections}")
 
         if len(connections) == 2:
             result += connections[0] * connections[1]

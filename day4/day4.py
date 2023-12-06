@@ -66,9 +66,3 @@ def part2(data) -> str:
         result += cards[card]
 
     return str(result)
-
-
-def pretty_print(lst: list[str]):
-    for c in lst:
-        print(c.split(":")[0].split(" ")[1], end=" ")
-    print()

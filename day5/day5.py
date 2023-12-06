@@ -9,7 +9,6 @@ def get_name() -> str:
 
 
 def part1(data) -> str:
-    print("Part 1")
     data_lines: list[str] = [x for x in data.splitlines() if x != ""]
 
     raw_seeds: str = data_lines[0].split(":")[1].strip()
@@ -50,9 +49,6 @@ def part1(data) -> str:
                 after_conversion.append(number)
 
         to_check = after_conversion.copy()
-        print(to_check)
-
-    print(to_check)
 
     return str(min(to_check))
 
@@ -140,7 +136,6 @@ class OffsetRange:
 
 
 def part2(data) -> str:
-    print("Part 2")
     data_lines: list[str] = [x for x in data.splitlines() if x != ""]
 
     raw_seeds: str = data_lines[0].split(":")[1].strip()
@@ -191,14 +186,12 @@ def part2(data) -> str:
                     after_conversion.append(output)
 
             for conversion in converted:
-                print(f"[1] {check_range} - {conversion} = {check_range.minus(conversion)}")
                 check_range = check_range.minus(conversion)
 
             if check_range is not None and len(check_range.margins) != 0:
                 after_conversion.append(check_range)
 
         to_check = after_conversion.copy()
-        print(to_check)
 
     minimum: int = 10000000000
 
