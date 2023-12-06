@@ -72,4 +72,3 @@ def part2(data) -> str:
         result += red * green * blue
 
     return str(result)
-
