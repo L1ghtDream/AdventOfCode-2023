@@ -20,6 +20,7 @@ def append_file(file: str, data, new_line=True):
         if new_line:
             f.write("\n")
 
+
 def replace_all(data: list[str], value: str, new_value: str) -> list[str]:
     data = data.copy()
 
