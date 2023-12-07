@@ -5,14 +5,14 @@ def get_name() -> str:
     return "day2"
 
 
-def part1(data) -> str:
+def part1(lines: list[str]) -> str:
     result: int = 0
 
     max_red: int = 12
     max_green: int = 13
     max_blue: int = 14
 
-    for game in data.splitlines():
+    for game in lines:
         game_name: str = game.split(":")[0].strip()
         game_id: int = int(game_name.split(" ")[1].strip())
 
@@ -25,10 +25,10 @@ def part1(data) -> str:
             green: int = 0
             blue: int = 0
 
-            for data in _data.split(","):
-                data = data.strip()
-                number: int = int(data.split(" ")[0].strip())
-                color: str = data.split(" ")[1].strip()
+            for lines in _data.split(","):
+                lines = lines.strip()
+                number: int = int(lines.split(" ")[0].strip())
+                color: str = lines.split(" ")[1].strip()
 
                 if color == "red":
                     red += number
@@ -46,10 +46,10 @@ def part1(data) -> str:
     return str(result)
 
 
-def part2(data) -> str:
+def part2(lines: list[str]) -> str:
     result: int = 0
 
-    for game in data.splitlines():
+    for game in lines:
         game_data = game.split(":")[1].strip()
 
         red: int = 0

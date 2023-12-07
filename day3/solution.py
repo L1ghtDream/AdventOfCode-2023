@@ -8,11 +8,10 @@ def get_name() -> str:
     return "day3"
 
 
-def part1(data) -> str:
+def part1(lines: list[str]) -> str:
     result: int = 0
 
-    symbols: set[str] = generate_symbols(data)
-    lines: list[str] = data.splitlines()
+    symbols: set[str] = generate_symbols(lines)
 
     data_processed: list[str] = []
 
@@ -54,11 +53,10 @@ def part1(data) -> str:
     return str(result)
 
 
-def part2(data) -> str:
+def part2(lines: list[str]) -> str:
     result: int = 0
 
-    symbols: set[str] = generate_symbols(data)
-    lines: list[str] = data.splitlines()
+    symbols: set[str] = generate_symbols(lines)
 
     data_processed: list[str] = []
 
@@ -116,10 +114,11 @@ def part2(data) -> str:
     return str(result)
 
 
-def generate_symbols(data: str) -> set[str]:
-    data = data.replace("\n", "").replace(".", "")
+def generate_symbols(data: list[str]) -> set[str]:
+    data = replace_all(data, "\n", "")
+    data = replace_all(data, ".", "")
 
     for number in range(0, 10):
-        data = data.replace(str(number), "")
+        data = replace_all(data, str(number), "")
 
     return set(data)

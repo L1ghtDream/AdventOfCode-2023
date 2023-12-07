@@ -5,19 +5,19 @@ def get_name() -> str:
     return "day1"
 
 
-def part1(data) -> str:
+def part1(lines: list[str]) -> str:
     result: int = 0
 
-    for line in data.splitlines():
+    for line in lines:
         result += extract_number(line)
 
     return str(result)
 
 
-def part2(data) -> str:
+def part2(lines: list[str]) -> str:
     result: int = 0
 
-    for line in add_spelled_out_numbers(data).splitlines():
+    for line in add_spelled_out_numbers(lines):
         result += extract_number(line)
 
     return str(result)
@@ -39,7 +39,7 @@ def extract_number(string: str) -> int:
     return first_digit * 10 + last_digit
 
 
-def add_spelled_out_numbers(string: str) -> str:
+def add_spelled_out_numbers(lines: list[str]) -> list[str]:
     digits: dict = {
         "zero": "0",
         "one": "1",
@@ -54,6 +54,6 @@ def add_spelled_out_numbers(string: str) -> str:
     }
 
     for key in digits.keys():
-        string = string.replace(key, key + digits[key] + key)
+        lines = replace_all(lines, key, key + digits[key] + key)
 
-    return string
+    return lines

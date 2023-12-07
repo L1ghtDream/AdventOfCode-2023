@@ -8,10 +8,10 @@ def get_name() -> str:
     return "day4"
 
 
-def part1(data) -> str:
+def part1(lines: list[str]) -> str:
     result: int = 0
 
-    for card in data.splitlines():
+    for card in lines:
         partial_result: int = 0
 
         card_data: str = card.split(":")[1]
@@ -33,9 +33,8 @@ def part1(data) -> str:
     return str(result)
 
 
-def part2(data) -> str:
-    cards_data: list[str] = data.splitlines()
-    number_of_cards: int = len(cards_data)
+def part2(lines: list[str]) -> str:
+    number_of_cards: int = len(lines)
 
     cards: dict[int:int] = {}
 
@@ -43,7 +42,7 @@ def part2(data) -> str:
         cards[index] = 1
 
     for index in range(1, number_of_cards + 1):
-        card = cards_data[index - 1]
+        card = lines[index - 1]
         card_data: str = card.split(":")[1]
         winning_data: str = card_data.split("|")[0]
         current_data: str = card_data.split("|")[1]

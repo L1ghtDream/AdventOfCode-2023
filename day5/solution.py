@@ -8,18 +8,18 @@ def get_name() -> str:
     return "day5"
 
 
-def part1(data) -> str:
-    data_lines: list[str] = [x for x in data.splitlines() if x != ""]
+def part1(lines: list[str]) -> str:
+    lines = [x for x in lines if x != ""]
 
-    raw_seeds: str = data_lines[0].split(":")[1].strip()
+    raw_seeds: str = lines[0].split(":")[1].strip()
     seeds: list[int] = [int(x) for x in raw_seeds.split(" ") if x != ""]
 
-    data_lines = data_lines[1:]
+    lines = lines[1:]
 
     maps: list[list[OffsetRange]] = []
     conversions: list[OffsetRange] = []
 
-    for line in data_lines:
+    for line in lines:
         if "map" in line:
             maps.append(conversions)
             conversions = []
@@ -135,10 +135,10 @@ class OffsetRange:
         return str(self)
 
 
-def part2(data) -> str:
-    data_lines: list[str] = [x for x in data.splitlines() if x != ""]
+def part2(data: list[str]) -> str:
+    lines = [x for x in data if x != ""]
 
-    raw_seeds: str = data_lines[0].split(":")[1].strip()
+    raw_seeds: str = lines[0].split(":")[1].strip()
     seeds_data: list[int] = [int(x) for x in raw_seeds.split(" ") if x != ""]
     seeds: list[OffsetRange] = []
 
@@ -148,11 +148,11 @@ def part2(data) -> str:
 
         seeds.append(OffsetRange(start, start + size, 0))
 
-    data_lines = data_lines[1:]
+    lines = lines[1:]
     maps: list[list[OffsetRange]] = []
     conversions: list[OffsetRange] = []
 
-    for line in data_lines:
+    for line in lines:
         if "map" in line:
             maps.append(conversions)
             conversions = []
