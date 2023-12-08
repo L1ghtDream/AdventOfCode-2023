@@ -20,9 +20,7 @@ distance = time_held * (time - time_held)
 
 """
 
-def part1(data) -> str:
-    data_lines: list[str] = data.splitlines()
-
+def part1(data_lines: list[str]) -> str:
     times: list[int] = [int(x) for x in data_lines[0].split(":")[1].split(" ") if x != ""]
     distances: list[int] = [int(x) for x in data_lines[1].split(":")[1].split(" ") if x != ""]
 
@@ -44,9 +42,7 @@ def part1(data) -> str:
     return str(result)
 
 
-def part2(data) -> str:
-    data_lines: list[str] = data.splitlines()
-
+def part2(data_lines: list[str]) -> str:
     race_time: int = int(data_lines[0].split(":")[1].replace(" ", ""))
     race_distance: int = int(data_lines[1].split(":")[1].replace(" ", ""))
 

@@ -1,8 +1,39 @@
 from utils import *
-import day6.solution as current_day
+import sys
+import importlib
+import os
+
+
+def get_last_day() -> int:
+    max_day: int = 0
+
+    for dir in os.listdir("."):
+        if not os.path.isdir(dir):
+            continue
+
+        if not dir.startswith("day"):
+            continue
+
+        if not dir[3:].isnumeric():
+            continue
+
+        day: int = int(dir[3:])
+        max_day = max(max_day, day)
+
+    return max_day
 
 
 def main():
+    number_of_arguments: int = len(sys.argv) - 1
+    arguments: list[str] = sys.argv[1:number_of_arguments]
+
+    if number_of_arguments == 0:
+        day: int = get_last_day()
+    else:
+        day: int = int(arguments[0])
+
+    current_day = importlib.import_module(f"day{day}.solution")
+
     day_name = current_day.get_name()
 
     part1_input_small: str = read_file(f"{day_name}/input/part1.input.small")
