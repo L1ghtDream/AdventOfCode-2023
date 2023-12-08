@@ -19,6 +19,7 @@ def write_file(file: str, data: any):
     with open(file, "w") as f:
         f.write(str(data))
 
+
 def replace_all(data: list[str], value: str, new_value: str) -> list[str]:
     data = data.copy()
 

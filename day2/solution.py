@@ -1,7 +1,6 @@
 from utils import *
 
 
-
 def part1(lines: list[str]) -> str:
     result: int = 0
 

@@ -2,8 +2,6 @@ from utils import *
 from functools import cmp_to_key
 
 
-
-
 def compare_hands(hand1: str, hand2: str, joker: bool) -> int:
     """
     :param hand1:

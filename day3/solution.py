@@ -3,6 +3,7 @@ from colorama import init as colorama_init
 from colorama import Fore
 from colorama import Style
 
+
 def part1(lines: list[str]) -> str:
     result: int = 0
 

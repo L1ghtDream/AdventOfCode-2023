@@ -4,10 +4,9 @@ from colorama import Fore
 from colorama import Style
 
 
-
-
 def compute_distance(time: int, time_held: int) -> int:
     return (time - time_held) * time_held
+
 
 """
 
@@ -17,6 +16,7 @@ distance = time_held * (time - time_held)
 
 
 """
+
 
 def part1(data_lines: list[str]) -> str:
     times: list[int] = [int(x) for x in data_lines[0].split(":")[1].split(" ") if x != ""]
