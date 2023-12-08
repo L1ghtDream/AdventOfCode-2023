@@ -4,8 +4,6 @@ from colorama import Fore
 from colorama import Style
 
 
-def get_name() -> str:
-    return "day5"
 
 
 def part1(lines: list[str]) -> str:

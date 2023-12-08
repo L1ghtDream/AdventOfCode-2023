@@ -4,8 +4,6 @@ from colorama import Fore
 from colorama import Style
 
 
-def get_name() -> str:
-    return "day6"
 
 
 def compute_distance(time: int, time_held: int) -> int:

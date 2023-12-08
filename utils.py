@@ -10,16 +10,14 @@ def read_file(file: str):
 
 
 def write_file(file: str, data: any):
+    if data == "":
+        return
+
+    if not os.path.isdir("/".join(file.split("/")[0:-1])):
+        os.makedirs("/".join(file.split("/")[0:-1]))
+
     with open(file, "w") as f:
         f.write(str(data))
-
-
-def append_file(file: str, data, new_line=True):
-    with open(file, "a") as f:
-        f.write(str(data))
-        if new_line:
-            f.write("\n")
-
 
 def replace_all(data: list[str], value: str, new_value: str) -> list[str]:
     data = data.copy()

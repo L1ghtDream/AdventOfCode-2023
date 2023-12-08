@@ -1,8 +1,6 @@
 from utils import *
 
 
-def get_name() -> str:
-    return "day1"
 
 
 def part1(lines: list[str]) -> str:

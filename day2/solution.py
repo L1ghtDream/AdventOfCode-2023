@@ -1,9 +1,6 @@
 from utils import *
 
 
-def get_name() -> str:
-    return "day2"
-
 
 def part1(lines: list[str]) -> str:
     result: int = 0

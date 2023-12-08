@@ -25,34 +25,39 @@ def get_last_day() -> int:
 
 def main():
     number_of_arguments: int = len(sys.argv) - 1
-    arguments: list[str] = sys.argv[1:number_of_arguments]
+    arguments: list[str] = sys.argv[1:]
 
     if number_of_arguments == 0:
-        day: int = get_last_day()
+        day_number: int = get_last_day()
     else:
-        day: int = int(arguments[0])
+        day_number: int = int(arguments[0])
 
-    current_day = importlib.import_module(f"day{day}.solution")
+    day_name = f"day{day_number}"
+    current_day = importlib.import_module(f"{day_name}.solution")
 
-    day_name = current_day.get_name()
+    for file in os.listdir(f"{day_name}/input/part1/"):
+        if not file.endswith(".input"):
+            continue
 
-    part1_input_small: str = read_file(f"{day_name}/input/part1.input.small")
-    part1_input: str = read_file(f"{day_name}/input/input")
+        partial_input: str = read_file(f"{day_name}/input/part1/{file}")
+        partial_output: str = current_day.part1(partial_input.splitlines()) if partial_input != "" else ""
+        write_file(f"{day_name}/output/part1/{file.replace('.input', '.output')}", partial_output)
 
-    part2_input_small: str = read_file(f"{day_name}/input/part2.input.small")
-    part2_input: str = read_file(f"{day_name}/input/input")
-
-    part1_output_small = current_day.part1(part1_input_small.splitlines()) if part1_input_small != "" else ""
+    part1_input: str = read_file(f"{day_name}/input/part1/input")
     part1_output = current_day.part1(part1_input.splitlines()) if part1_input != "" else ""
+    write_file(f"{day_name}/output/part1/output", part1_output)
 
-    part2_output_small = current_day.part2(part2_input_small.splitlines()) if part2_input_small != "" else ""
-    part2_output = current_day.part2(part2_input.splitlines()) if part2_input != "" else ""
+    for file in os.listdir(f"{day_name}/input/part2/"):
+        if not file.endswith(".input"):
+            continue
 
-    write_file(f"{day_name}/output/part1.output.small", part1_output_small)
-    write_file(f"{day_name}/output/part1.output", part1_output)
+        partial_input: str = read_file(f"{day_name}/input/part2/{file}")
+        partial_output: str = current_day.part2(partial_input.splitlines()) if partial_input != "" else ""
+        write_file(f"{day_name}/output/part2/{file.replace('.input', '.output')}", partial_output)
 
-    write_file(f"{day_name}/output/part2.output.small", part2_output_small)
-    write_file(f"{day_name}/output/part2.output", part2_output)
+    part2_input: str = read_file(f"{day_name}/input/part2/input")
+    part2_output = current_day.part2(part1_input.splitlines()) if part2_input != "" else ""
+    write_file(f"{day_name}/output/part2/output", part2_output)
 
 
 if __name__ == '__main__':

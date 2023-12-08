@@ -2,8 +2,6 @@ from utils import *
 from functools import cmp_to_key
 
 
-def get_name() -> str:
-    return "day7"
 
 
 def compare_hands(hand1: str, hand2: str, joker: bool) -> int:
@@ -40,7 +38,6 @@ def compare_cards(hand1_cards: str, hand2_cards: str, joker: bool) -> int:
     cards: str = "23456789TJQKA" if not joker else "J23456789TQKA"
 
     for index in range(len(hand1_cards)):
-        print(f"{cards.index(hand1_cards[index])} vs {cards.index(hand2_cards[index])}")
         if cards.index(hand1_cards[index]) > cards.index(hand2_cards[index]):
             return 1
         elif cards.index(hand1_cards[index]) < cards.index(hand2_cards[index]):
@@ -65,88 +62,61 @@ def get_cards_freq(hand: str, joker: bool) -> dict[str, int]:
 
 
 def get_hand_value(hand: str, joker: bool) -> int:
-
-    print(f"{hand} - ", end="")
-
     joker_count: int = 0
 
     if hand == "JJJJJ":
-        print("[N/J] 5 of a kind")
         return 6
 
     if joker:
         joker_count = hand.count("J")
-
         hand = hand.replace("J", "")
 
     if check_five_of_a_kind(hand, joker):
-        print("[J] 5 of a kind")
         return 6
 
     if check_four_of_a_kind(hand, joker):
         if joker_count == 1:
-            print("[J] 5 of a kind")
             return 6
-
-        print("[N] 4 of a kind")
         return 5
 
     if check_full_house(hand, joker):
-        print("[N] full house")
         return 4
 
     if check_three_of_a_kind(hand, joker):
         if joker_count == 1:
-            print("[J] 4 of a kind")
             return 5
-
         if joker_count == 2:
-            print("[J] 5 of a kind")
             return 6
-
-        print("[N] 3 of a kind")
         return 3
 
     if check_two_pair(hand, joker):
         if joker_count == 1:
-            print("[J] full house")
             return 4
-
-        print("2 pair")
         return 2
     if check_one_pair(hand, joker):
         if joker_count == 1:
-            print("[J] 3 of a kind")
             return 3
 
         if joker_count == 2:
-            print("[J] 4 of a kind")
             return 5
 
         if joker_count == 3:
-            print("[J] 5 of a kind")
             return 6
 
-        print("[N } 1 pair")
         return 1
 
     if joker_count == 1:
-        print("[J] 1 pair")
         return 1
 
     if joker_count == 2:
-        print("[J] 3 of a kind")
         return 3
 
     if joker_count == 3:
-        print("[J] 4 of a kind")
         return 5
 
     if joker_count == 4:
-        print("[J] 5 of a kind")
         return 6
 
-    print("[N] high card")
     return 0
 
 
@@ -210,8 +180,6 @@ def part1(lines: list[str]) -> str:
 
     hands = sorted(hands, key=cmp_to_key(lambda hand1, hand2: compare_hands(hand1[0], hand2[0], False)), reverse=True)
 
-    print(hands)
-
     result: int = 0
 
     for index in range(len(hands)):
@@ -231,8 +199,6 @@ def part2(lines: list[str]) -> str:
         hands.append((hand, int(bet)))
 
     hands = sorted(hands, key=cmp_to_key(lambda hand1, hand2: compare_hands(hand1[0], hand2[0], True)), reverse=True)
-
-    print(hands)
 
     result: int = 0
 
